@@ -1,3 +1,9 @@
 SHOW PAGE FOR A CUSTOMER ENTRY
 
 <p><%= @customer_entry.content %></p>
+
+Edit Link
+<a href="/journal_entries/<%= @customer_entry.id %>/edit">Edit Customer</a>
+
+Delete Link 
+<a href="/journal_entries/id/delete">Delete</a>
