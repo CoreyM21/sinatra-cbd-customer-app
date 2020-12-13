@@ -46,10 +46,10 @@ class UsersController < ApplicationController
         if params[:name] != "" && params[:email] != "" && params[:password] != ""
             # valid input
             @user = User.create(params)
+            session[:user_id] = @user.id #actually logging user in
             # where do I go now?
             # go to user show page
-            redirect '/users/#{@user.id}'
-            erb :'/users/show'
+            redirect "/users/#{@user.id}"
         else 
             # not valid input
             # it would be better to include a message to the user telling them what is wrong
