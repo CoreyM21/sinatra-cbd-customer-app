@@ -23,9 +23,9 @@ class CustomerEntriesController < ApplicationController
     end
 
     # show route for a journal entry
-    get '/journal_entries/:id' do 
-        @journal_entry = JournalEntry.find(params[:id])
-        erb :'/journal_entries/show'
+    get '/customer_entries/:id' do 
+        @customer_entry = CustomerEntry.find(params[:id])
+        erb :'/customer_entries/show'
     end
 
     # index route for all customer entries
