@@ -28,6 +28,13 @@ class CustomerEntriesController < ApplicationController
         erb :'/customer_entries/show'
     end
 
+    # This route should send us to /customer_entries/edit.erb 
+    # render an edit form
+
+    get '/journal_entries/:id/edit' do
+        "Hello World"
+      end
+
     # index route for all customer entries
 
 end
