@@ -7,10 +7,23 @@ class CustomerEntriesController < ApplicationController
 
     # post customer_entres to create new customer entry
     post '/customer_entries' do 
-
+        # I want to create a new customer entrye and save to the DB
+        # I only want to create an entry if the user is logged in
+        if !logged_in?
+            redirect '/'
+        end 
+        # I only want to save the entry if it has some content
+        if params[:content] != ""
+            # create a new entry
+            @customer_entry = CustomerEntry.create(content: params[:content], user_id: current_user.id)
+            redirect "/customer_entries/#{@customer_entry.id}"
+        else
+            redirect '/customer_entries/new'
+        end
     end
 
     # show route for a journal entry
+    
 
     # index route for all customer entries
 
