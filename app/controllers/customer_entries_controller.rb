@@ -22,7 +22,7 @@ class CustomerEntriesController < ApplicationController
         end
     end
 
-    # show route for a journal entry
+    # show route for a customer entry
     get '/customer_entries/:id' do 
         @customer_entry = CustomerEntry.find(params[:id])
         erb :'/customer_entries/show'
@@ -31,9 +31,9 @@ class CustomerEntriesController < ApplicationController
     # This route should send us to /customer_entries/edit.erb 
     # render an edit form
 
-    get '/journal_entries/:id/edit' do
-        "Hello World"
-      end
+    get '/customer_entries/:id/edit' do
+        erb :'/customer_entries/edit'
+    end
 
     # index route for all customer entries
 
