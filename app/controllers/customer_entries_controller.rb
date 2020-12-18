@@ -24,18 +24,55 @@ class CustomerEntriesController < ApplicationController
 
     # show route for a customer entry
     get '/customer_entries/:id' do 
-        @customer_entry = CustomerEntry.find(params[:id])
+        set_customer_entry
         erb :'/customer_entries/show'
     end
+
+
+    #major problems!!
+    # 1. Anyone can edit anyones customer entires
+    # 2. also, edit an entry to be blank
 
     # This route should send us to /customer_entries/edit.erb 
     # render an edit form
 
     get '/customer_entries/:id/edit' do
-        @customer_entry = CustomerEntry.find(params[:id])
-        erb :'/customer_entries/edit'
+        set_customer_entry
+        if logged_in?
+            if @customer_entry.user == current_user
+                erb :'/customer_entries/edit'
+            else
+                redirect "users/#{current_user.id}"
+            end
+        else 
+            redirect '/'    
+        end
+    end
+
+
+    # This action's job is to 
+    patch '/customer_entries/:id' do
+        # 1. find cutomer entry
+        set_customer_entry
+        if logged_in?
+            if @customer_entry.user == current_user
+                # 2. Modify (update) the entry
+                @customer_entry.update(content: params[:content])
+                # 3. redirect to show page
+                redirect "/customer_entries/#{@customer_entry.id}"
+            else
+                redirect "users/#{current_user.id}"
+            end
+        else
+            redirect '/'
+        end
     end
 
     # index route for all customer entries
 
+    private 
+
+    def set_customer_entry
+        @customer_entry = CustomerEntry.find(params[:id])
+    end
 end
