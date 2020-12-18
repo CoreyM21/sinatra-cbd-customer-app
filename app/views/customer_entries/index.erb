@@ -1,1 +1,8 @@
-INDEX PAGE FOR CUSTOMER ENTRIES
+ALL CUSTOMER ENTRIES 
+
+<% @customer_entries.each do |customer_entry| %>
+    <h5><a href="/customer_entries/<%= customer_entry.id %>"><%= customer_entry.created_at %></a></h5>
+    <p><%= customer_entry.content %></p>
+    <p>By <%= customer_entry.user.name %></p>
+    <br><br>
+<% end %>
