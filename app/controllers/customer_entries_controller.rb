@@ -32,6 +32,7 @@ class CustomerEntriesController < ApplicationController
     # render an edit form
 
     get '/customer_entries/:id/edit' do
+        @customer_entry = CustomerEntry.find(params[:id])
         erb :'/customer_entries/edit'
     end
 
