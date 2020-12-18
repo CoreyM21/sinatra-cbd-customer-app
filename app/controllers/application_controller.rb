@@ -29,7 +29,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def authorized_to_edit?(customer_entry)
-      customer_entry.user == current_user
+      @customer_entry.user == current_user
     end
   end
 

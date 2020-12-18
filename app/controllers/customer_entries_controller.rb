@@ -60,7 +60,7 @@ class CustomerEntriesController < ApplicationController
         # 1. find cutomer entry
         set_customer_entry
         if logged_in?
-            if authorized_to_edit?(@customer_entry)
+            if authorized_to_edit?(@customer_entry) && params[:content] != ""
                 # 2. Modify (update) the entry
                 @customer_entry.update(content: params[:content])
                 # 3. redirect to show page
@@ -70,6 +70,16 @@ class CustomerEntriesController < ApplicationController
             end
         else
             redirect '/'
+        end
+    end
+
+    delete '/customer_entries/:id' do
+        set_customer_entry
+        if authorized_to_edit?(@customer_entry)
+            @customer_entry.destroy
+            redirect '/customer_entries'
+        else
+            redirect '/customer_entries'
         end
     end
 
