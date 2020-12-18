@@ -1,5 +1,10 @@
 class CustomerEntriesController < ApplicationController
 
+    get '/customer_entries' do
+        @customer_entries = CustomerEntry.all
+        erb :'customer_entries/index'
+    end
+
     # get customer_entries/new to render a form to create new entry
     get '/customer_entries/new' do 
         erb :'/customer_entries/new'
@@ -39,7 +44,7 @@ class CustomerEntriesController < ApplicationController
     get '/customer_entries/:id/edit' do
         set_customer_entry
         if logged_in?
-            if @customer_entry.user == current_user
+            if authorized_to_edit?(@customer_entry)
                 erb :'/customer_entries/edit'
             else
                 redirect "users/#{current_user.id}"
@@ -55,7 +60,7 @@ class CustomerEntriesController < ApplicationController
         # 1. find cutomer entry
         set_customer_entry
         if logged_in?
-            if @customer_entry.user == current_user
+            if authorized_to_edit?(@customer_entry)
                 # 2. Modify (update) the entry
                 @customer_entry.update(content: params[:content])
                 # 3. redirect to show page
