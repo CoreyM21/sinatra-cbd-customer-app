@@ -6,6 +6,6 @@ Edit Page For Customer Entry
 <form class="" action="/customer_entries/<%= @customer_entry.id %>" method="post">
         <input type="hidden" name="_method" value="patch">
     <label for="content">Customer: </label>
-        <input type="textarea" name="content" value="<%= @customer_entry.content %>">
+        <input type="text" name="content" value="<%= @customer_entry.content %>">
         <input type="submit" name="" value="Edit Entry">
 </form>
