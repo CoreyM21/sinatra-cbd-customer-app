@@ -2,8 +2,8 @@ SHOW PAGE FOR A CUSTOMER ENTRY
 
 <p><%= @customer_entry.content %></p>
 
-Edit Link
+<% if authorized_to_edit?(@customer_entry) %>
 <a href="/customer_entries/<%= @customer_entry.id %>/edit">Edit Customer</a>
-
-Delete Link 
+ 
 <a href="/customer_entries/id/delete">Delete Customer</a>
+<% end %>
