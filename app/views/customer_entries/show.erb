@@ -4,6 +4,9 @@ SHOW PAGE FOR A CUSTOMER ENTRY
 
 <% if authorized_to_edit?(@customer_entry) %>
 <a href="/customer_entries/<%= @customer_entry.id %>/edit">Edit Customer</a>
- 
-<a href="/customer_entries/id/delete">Delete Customer</a>
+<br><br> 
+<form class="" action="/customer_entries/<%= @customer_entry.id %>" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" name="" value="Delete Customer">
+</form>
 <% end %>
