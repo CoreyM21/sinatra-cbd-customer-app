@@ -20,9 +20,11 @@ class CustomerEntriesController < ApplicationController
         # I only want to save the entry if it has some content
         if params[:content] != ""
             # create a new entry
+            flash[:message] = "Customer Created!"
             @customer_entry = CustomerEntry.create(content: params[:content], user_id: current_user.id)
             redirect "/customer_entries/#{@customer_entry.id}"
         else
+            flash[:message] = "Something went wrong."
             redirect '/customer_entries/new'
         end
     end
