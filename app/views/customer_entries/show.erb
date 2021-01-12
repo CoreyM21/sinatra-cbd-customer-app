@@ -1,6 +1,10 @@
-SHOW PAGE FOR A CUSTOMER ENTRY
-
+<h4><%= @customer_entry.title %></h4>
 <p><%= @customer_entry.content %></p>
+<p><%= @customer_entry.phone %></p>
+
+<p>Created By: <%= @customer_entry.user.name %></p>
+
+<p>Created on <%= @customer_entry.created_at %></p>
 
 <% if authorized_to_edit?(@customer_entry) %>
 <a href="/customer_entries/<%= @customer_entry.id %>/edit">Edit Customer</a>

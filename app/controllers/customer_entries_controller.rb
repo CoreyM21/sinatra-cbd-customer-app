@@ -21,7 +21,8 @@ class CustomerEntriesController < ApplicationController
         if params[:content] != ""
             # create a new entry
             flash[:message] = "Customer Created!"
-            @customer_entry = CustomerEntry.create(content: params[:content], user_id: current_user.id)
+            @customer_entry = CustomerEntry.create(content: params[:content], user_id: current_user.id, title: params[:title], phone: params[:phone])
+            # @customer_entry = CustomerEntry.create(params)
             redirect "/customer_entries/#{@customer_entry.id}"
         else
             flash[:errors] = "Something went wrong. Cannot be blank"

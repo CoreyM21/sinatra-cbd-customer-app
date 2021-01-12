@@ -7,11 +7,11 @@ christina = User.create(name: "Christina", email: "christina@gmail.com", passwor
 
 # create some customer entries
 
-CustomerEntry.create(content: "Corey Martin / 10 Hickory Street Central Islip NY 11722 / 631-258-2001 / called", user_id: corey.id)
+CustomerEntry.create(title: "Corey Martin", content: "10 Hickory Street Central Islip NY 11722", phone: "6312582001", user_id: corey.id)
 
 #use active record to pre-associate data:
 
-corey.customer_entries.create(content: "This is a test")
+corey.customer_entries.create(title: "Test", content: "This is a test", phone: "123")
 
-christina_entry = christina.customer_entries.build(content: "DO NOT CALL COREY")
+christina_entry = christina.customer_entries.build(title: "Don't Call", content: "DO NOT CALL COREY", phone: "0")
 christina_entry.save
