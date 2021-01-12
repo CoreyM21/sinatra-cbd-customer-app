@@ -21,8 +21,8 @@ class ApplicationController < Sinatra::Base
   helpers do
 
     def logged_in?
-      # true if user is logged in, otherwise false
-      !!current_user # !! converts to a boolean
+      
+      !!current_user 
     end
 
     def current_user
@@ -33,12 +33,6 @@ class ApplicationController < Sinatra::Base
       @customer_entry.user == current_user
     end
 
-    def redirect_if_not_logged_in
-      if !logged_in?
-        flash[:errors] = "You must be logged in to view that page!"
-        redirect '/'
-      end
-    end
   end
 
 end
