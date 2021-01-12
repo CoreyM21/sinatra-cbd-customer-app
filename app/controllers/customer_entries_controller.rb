@@ -65,7 +65,8 @@ class CustomerEntriesController < ApplicationController
         if logged_in?
             if authorized_to_edit?(@customer_entry) && params[:content] != ""
                 # 2. Modify (update) the entry
-                @customer_entry.update(content: params[:content])
+                @customer_entry.update(content: params[:content], title: params[:title], phone: params[:phone])  
+                flash[:message] = "Customer Updated!"           
                 # 3. redirect to show page
                 redirect "/customer_entries/#{@customer_entry.id}"
             else

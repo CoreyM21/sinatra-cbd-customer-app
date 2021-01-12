@@ -1,7 +1,7 @@
 ALL CUSTOMER ENTRIES 
 
 <% @customer_entries.each do |customer_entry| %>
-    <h5><a href="/customer_entries/<%= customer_entry.id %>"><%= customer_entry.created_at %></a></h5>
+    <h5><a href="/customer_entries/<%= customer_entry.id %>"><%= customer_entry.formatted_created_at %></a></h5>
     <strong><%= customer_entry.title %></strong>
     <p><%= customer_entry.content %></p>
     <p><%= customer_entry.phone %></p>

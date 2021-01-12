@@ -4,7 +4,7 @@
 
 <p>Created By: <%= @customer_entry.user.name %></p>
 
-<p>Created on <%= @customer_entry.created_at %></p>
+<p>Created on <%= @customer_entry.formatted_created_at %></p>
 
 <% if authorized_to_edit?(@customer_entry) %>
 <a href="/customer_entries/<%= @customer_entry.id %>/edit">Edit Customer</a>
