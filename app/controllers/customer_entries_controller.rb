@@ -24,7 +24,7 @@ class CustomerEntriesController < ApplicationController
             @customer_entry = CustomerEntry.create(content: params[:content], user_id: current_user.id)
             redirect "/customer_entries/#{@customer_entry.id}"
         else
-            flash[:message] = "Something went wrong."
+            flash[:errors] = "Something went wrong. Cannot be blank"
             redirect '/customer_entries/new'
         end
     end
@@ -79,6 +79,7 @@ class CustomerEntriesController < ApplicationController
         set_customer_entry
         if authorized_to_edit?(@customer_entry)
             @customer_entry.destroy
+            flash[:message] = "Successfully Deleted Entry"
             redirect '/customer_entries'
         else
             redirect '/customer_entries'
