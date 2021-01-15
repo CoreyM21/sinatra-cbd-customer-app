@@ -33,6 +33,12 @@ class ApplicationController < Sinatra::Base
       @customer_entry.user == current_user
     end
 
+    def redirect_if_not_logged_in
+      if !logged_in?
+        redirect '/'
+      end
+    end
+
   end
 
 end

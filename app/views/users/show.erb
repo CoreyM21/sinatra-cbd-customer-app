@@ -2,3 +2,14 @@
 
 <h3>Email: </h3>
 <h4><%= @user.email %></h4>
+<br><br>
+<% @user.customer_entries.each do |customer_entry| %>
+    <h5><a href="/customer_entries/<%= customer_entry.id %>"><%= customer_entry.formatted_created_at %></a></h5>
+    <strong><%= customer_entry.title %></strong>
+    <p><%= customer_entry.content %></p>
+    <p><%= customer_entry.phone %></p>
+    <p>By <%= customer_entry.user.name %></p>
+    <br><br>
+<% end %>
+
+

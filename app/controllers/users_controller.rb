@@ -54,7 +54,7 @@ class UsersController < ApplicationController
     get '/users/:id' do 
         
         @user = User.find_by(id: params[:id])
-        session[:user_id] = @user.id 
+        session[:user_id] = @user.id
         erb :'/users/show'
     end
 

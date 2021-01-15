@@ -39,14 +39,11 @@ class CustomerEntriesController < ApplicationController
 
     get '/customer_entries/:id/edit' do
         set_customer_entry
-        if logged_in?
-            if authorized_to_edit?(@customer_entry)
-                erb :'/customer_entries/edit'
-            else
-                redirect "users/#{current_user.id}"
-            end
-        else 
-            redirect '/'    
+        redirect_if_not_logged_in
+        if authorized_to_edit?(@customer_entry)
+            erb :'/customer_entries/edit'
+        else
+            redirect "users/#{current_user.id}"
         end
     end
 
