@@ -7,6 +7,9 @@ To run this app, clone the repo and run bundle install. The run shotgun to fire 
 Prerequisites
 You will need to have Ruby installed on your machine - Linux or Mac.
 
+Video Links 
+Video Walkthrough: https://youtu.be/0x4JgRAcyJo
+
 Built With
 Sinatra
 sinatra-activerecord
